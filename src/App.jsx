@@ -1,6 +1,6 @@
 
 function App() {
-  return <><h1>Array Methods</h1></>;
+  return <></>;
 }
 
 export default App;
