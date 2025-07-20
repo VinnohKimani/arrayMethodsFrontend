@@ -13,6 +13,8 @@ export const SignUpForm = () => {
       return;
     }
     console.log("Form Data:", data);
+    alert("Account created successfully!");
+    reset(); // this will clear the form
   };
 
   return (
@@ -68,12 +70,12 @@ export const SignUpForm = () => {
           {" "}
           <label htmlFor="">Phone Number</label>
           <input
-            type="number"
+            type="tel"
             {...register("phoneNumber", {
               required: "Phone number is required",
             })}
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            placeholder="phone number"
+            placeholder="+254 712345678"
           />
           {errors.phoneNumber && (
             <p className="text-red-600 text-sm mt-1">{errors.message}</p>
