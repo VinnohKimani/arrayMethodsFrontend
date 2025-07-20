@@ -1,69 +1,35 @@
 import { useForm } from "react-hook-form";
 
-export const SignUpForm = () => {
+export const LoginForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm();
   const onSubmit = (data) => {
-    const { password, confirmPassword } = data;
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
     console.log("Form Data:", data);
-    alert("Account created successfully!");
-    reset(); // this will clear the form
+    alert("Login Successfull");
+    reset(); 
   };
 
   return (
     <div className=" bg-white p-6 rounded-2xl shadow-md space-y-6">
       <div>
         <h2 className="text-2xl font-bold text-gray-800 text-center">
-          Create an Account
+          Welcome Back
         </h2>
       </div>
       <div className="text-center text-sm">
-        Already have an account?{" "}
+        I don't have an account?{" "}
         <a
-          href="/login"
+          href="/signUp"
           className="underline underline-offset-4 hover:cursor-pointer"
         >
-          Login
+          SignUp
         </a>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div>
-          {" "}
-          <label htmlFor="">First name</label>
-          <input
-            type="text"
-            {...register("firstName", { required: "First name is required" })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            placeholder="First name"
-          />
-          {errors.firstName && (
-            <p className="text-red-600 text-sm mt-1">
-              {errors.firstName.message}
-            </p>
-          )}
-        </div>
-        <div>
-          {" "}
-          <label htmlFor="">Last name</label>
-          <input
-            type="text"
-            {...register("lastName", { required: "Last Name is required" })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            placeholder="Last name"
-          />
-          {errors.lastName && (
-            <p className="text-red-600 text-sm mt-1">
-              {errors.lastName.message}
-            </p>
-          )}
-        </div>
         <div>
           {" "}
           <label htmlFor="email">Email</label>
@@ -105,26 +71,11 @@ export const SignUpForm = () => {
             <p className="text-red-600 text-sm mt-1">{errors.message}</p>
           )}
         </div>
-        <div>
-          {" "}
-          <label htmlFor="password">Confirm Password</label>
-          <input
-            type="password"
-            {...register("confirmPassword", {
-              required: "please confirm password",
-            })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            placeholder="confrim password"
-          />
-          {errors.confirmPassword && (
-            <p className="text-red-600 text-sm mt-1">{errors.message}</p>
-          )}
-        </div>
         <button
           type="submit"
           className="w-full bg-green-700 text-white py-2 rounded-md hover:bg-green-800 transition"
         >
-          Create Account
+          Login
         </button>
       </form>
     </div>
